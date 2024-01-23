@@ -71,13 +71,11 @@ const Dashboard = () => {
         Doctor Dashboard
       </Typography>
 
-      {/* Filter and Search Section */}
       <Grid container spacing={2} style={{ marginBottom: "20px" }}>
         <Grid item xs={12} sm={4}>
           <FormControl fullWidth>
             <InputLabel>Filter by Specialization</InputLabel>
             <Select>
-              {/* Add options dynamically based on unique specializations in appointments */}
               <MenuItem value="cardiologist">Cardiologist</MenuItem>
               <MenuItem value="dermatologist">Dermatologist</MenuItem>
               <MenuItem value="pediatrician">Pediatrician</MenuItem>
@@ -94,12 +92,11 @@ const Dashboard = () => {
           </Button>
         </Grid>
       </Grid>
-      {/* Doctor Cards */}
+
       <Grid container spacing={3}>
         {doctors?.map((doctor) => (
           <Grid item key={doctor.id} xs={12} sm={6} md={4}>
             <Card>
-              {/* Display Image if available */}
               {doctor.image && (
                 <CardMedia
                   component="img"
@@ -129,7 +126,7 @@ const Dashboard = () => {
                 <Typography variant="h6" style={{ marginTop: "10px" }}>
                   Fee: ${doctor.fee}
                 </Typography>
-                {/* Add Edit and Delete buttons here */}
+
                 <Button
                   variant="outlined"
                   color="primary"
@@ -153,7 +150,6 @@ const Dashboard = () => {
       <Dialog open={editModalOpen} onClose={handleEditModalClose}>
         <DialogTitle>Edit Doctor Details</DialogTitle>
         <DialogContent>
-          {/* Editable Fields */}
           <TextField
             label="Name"
             fullWidth
