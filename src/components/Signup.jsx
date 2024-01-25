@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, Input, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled(Box)({
   overflow: "hidden",
@@ -101,6 +102,7 @@ const Signup = () => {
     setShowSignup(!showSignup);
   };
 
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -126,6 +128,7 @@ const Signup = () => {
       localStorage.setItem("token", token);
 
       alert("Login Successful");
+      navigate("/onboard");
     } catch (error) {
       console.log(error.message);
       alert("Invalid Credentials");
@@ -138,7 +141,6 @@ const Signup = () => {
         "https://masai-hospital-backend-6ckm.onrender.com/signup",
         user
       );
-      console.log(res);
 
       alert("Signup Successful");
       setShowSignup(!showSignup);
