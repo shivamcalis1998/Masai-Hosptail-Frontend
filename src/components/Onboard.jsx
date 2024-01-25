@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 
 import { useDispatch } from "react-redux";
-import { OnboardDoctor } from "../redux/action";
+import { OnboardDoctorData } from "../redux/action";
 import { useNavigate } from "react-router-dom";
 
 const specialties = [
@@ -43,7 +43,7 @@ const Onboard = () => {
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(OnboardDoctor(formData));
+    await dispatch(OnboardDoctorData(formData));
 
     naviagte("/dashboard");
   };

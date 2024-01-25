@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  DeleteAppoint,
-  GetAppointments,
-  editAppointments,
+  deleteAppointment,
+  getAppointmentsData,
+  editAppointmentsData,
 } from "../redux/action.js";
 import {
   Container,
@@ -34,7 +34,6 @@ const Dashboard = () => {
 
   const dispatch = useDispatch();
   const [editModalOpen, setEditModalOpen] = useState(false);
-  //   const [selectedDoctor, setSelectedDoctor] = useState({});
   const { doctors } = useSelector((store) => store);
   const [editedDoctor, setEditedDoctor] = useState(null);
 
@@ -42,7 +41,7 @@ const Dashboard = () => {
     setEditedDoctor((prev) => ({ ...prev, [field]: value }));
   };
   useEffect(() => {
-    dispatch(GetAppointments());
+    dispatch(getAppointmentsData());
   }, [dispatch]);
 
   const handleEditClick = (doctor) => {
@@ -56,14 +55,14 @@ const Dashboard = () => {
   };
 
   const handleEditSubmit = async () => {
-    await dispatch(editAppointments(editedDoctor, editedDoctor._id));
+    await dispatch(editAppointmentsData(editedDoctor, editedDoctor._id));
 
     setEditModalOpen(false);
   };
 
   const Deletesubmit = async (id) => {
-    await dispatch(DeleteAppoint(id));
-    dispatch(GetAppointments());
+    await dispatch(deleteAppointment(id));
+    dispatch(getAppointmentsData());
   };
   return (
     <Container maxWidth="lg" style={{ marginTop: "50px" }}>
